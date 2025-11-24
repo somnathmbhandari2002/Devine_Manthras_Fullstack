@@ -12,7 +12,7 @@ import os
 # -------------------------------------------------
 # Environment Variables
 # -------------------------------------------------
-MONGO_URL = os.getenv("MONGO_URL", "mongodb+srv://somnath:somnath@cluster0.izhugny.mongodb.net")
+MONGO_URL = os.getenv("MONGO_URL", "YOUR_MONGODB_ATLAS_URL")
 ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin")
 
@@ -610,4 +610,5 @@ def delete_paper(
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Paper not found")
     
+
     return {"message": "Paper deleted successfully"}
