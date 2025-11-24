@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌺 Mahārājñī — Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --saffron:#F1C338; --maroon:#7A1F1F; --kumkum:#A53A2D; --gold:#D4AF37; --ivory:#FFF7EA;
+      --card-bg:rgba(255,247,234,0.75); --shadow:0 10px 30px rgba(122,31,31,0.18);
+      --sidebar-w: 260px; --sidebar-gap: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{ margin:0; height:100%; scroll-behavior:smooth; background: radial-gradient(2000px 1200px at 80% -10%, rgba(244,220,170,0.35), transparent 60%), radial-gradient(1800px 900px at -10% 10%, rgba(241,195,56,0.25), transparent 55%), linear-gradient(180deg, #FFF9EF 0%, #FDEFD4 100%); color:#4a2c2a; font-family:"Noto Serif Devanagari","Georgia",serif; } 
+    @media (min-width: 1024px) { body { position: relative; } body::before{ content:""; position: fixed; inset: 0; z-index:-1; background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("LALITHA_IMAGE_URL") center center / cover no-repeat fixed; pointer-events:none; will-change: transform; } }
+   
+    /* Sidebar */
+    .sidebar{
+      position:fixed; inset:0 auto 0 0; width:var(--sidebar-w); z-index:30; overflow-y:auto;
+      background:linear-gradient(180deg,#6d1b1b 0%,#9e3a2f 100%); border-right:1px solid rgba(212,175,55,.5);
+      color:#ffe8c9; box-shadow:8px 0 28px rgba(0,0,0,.25);
+      transform:translateX(calc(-1 * var(--sidebar-w) - 10px)); transition:transform .35s ease;
+      padding:14px 0;
+    }
+    .with-sidebar .sidebar{ transform:translateX(0); }
+    .sidebar .brand-row{ display:flex; align-items:center; gap:8px; padding:10px 16px 12px 18px; }
+    .sidebar .om{ font-size:26px; color:#ffdd00; }
+    .sidebar .title{ font-family:"Cinzel",serif; font-weight:700; letter-spacing:.3px; }
+    .side-section-title{ margin:12px 16px 6px; color:#ffd88a; font-size:12px; text-transform:uppercase; letter-spacing:.8px; opacity:.95; }
+    .side-link{ display:flex; align-items:center; gap:10px; padding:12px 16px; margin:0 8px; border-radius:10px; color:#ffe8c9; text-decoration:none; font-weight:600; letter-spacing:.2px; border:1px solid transparent; }
+    .side-link:hover{ background:rgba(241,195,56,.12); border-color:rgba(241,195,56,.35); transform:translateX(3px); transition:.2s; }
+
+    /* Page wrapper */
+    .page{ min-height:100%; transition:transform .35s ease; }
+    .with-sidebar .page{ transform:translateX(calc(var(--sidebar-w) + var(--sidebar-gap))); }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between;
+      padding:12px 16px; background:linear-gradient(90deg, rgba(122,31,31,0.92), rgba(165,58,45,0.92));
+      border-bottom:1px solid rgba(212,175,55,.55); backdrop-filter:blur(6px);
+    }
+    .brand{ display:flex; align-items:center; gap:10px; color:#fff5e1; }
+    .om-symbol{ font-size:28px; color:#ffdd00; }
+    .title{ font-family:"Georgia",serif; font-size:20px; letter-spacing:1px; }
+    .hamburger{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; margin-right:10px; border-radius:10px; border:1px solid rgba(212,175,55,.5); background:rgba(255,255,255,.05); cursor:pointer; }
+    .hamburger .bar{ position:relative; width:20px; height:2px; background:#ffdd99; border-radius:2px; }
+    .hamburger .bar::before,.hamburger .bar::after{ content:""; position:absolute; left:0; width:20px; height:2px; background:#ffdd99; border-radius:2px; }
+    .hamburger .bar::before{ top:-6px; } .hamburger .bar::after{ top:6px; }
+
+    .btn{ background:linear-gradient(180deg,var(--saffron),#E6B52C); color:#3b240b; border:none; padding:10px 18px; border-radius:10px; font-weight:700; cursor:pointer; box-shadow:0 6px 16px rgba(241,195,56,.35); }
+
+    /* Hero */
+    .hero{
+      position:relative; display:grid; place-items:center; text-align:center; padding:34px 16px;
+      background:url('https://images.unsplash.com/photo-1508711043262-0a1a0753f0e8?q=80&w=1200&auto=format&fit=crop') no-repeat center/cover;
+    }
+    .hero::after{ content:""; position:absolute; inset:0; background: radial-gradient(ellipse at center, rgba(255,255,255,0.6), rgba(255,255,255,0.1) 60%, transparent 75%); }
+    .hero-inner{ position:relative; z-index:1; max-width:980px; }
+    .hero h1{ margin:8px 0 4px; font-family:"Cinzel",serif; font-size:clamp(26px,4.8vw,42px); color:#5a1010; text-shadow:0 1px 0 #fff, 0 8px 24px rgba(122,31,31,0.28); }
+    .hero p{ margin:0 auto; max-width:760px; color:#5b3a2a; background:rgba(255,255,255,.7); padding:10px 14px; border-radius:12px; border:1px solid rgba(212,175,55,.3); }
+
+    /* Content */
+    .container{ max-width:1100px; margin:22px auto 40px; padding:0 20px; }
+    .section{ background:var(--card-bg); border:1px solid rgba(212,175,55,.35); border-radius:16px; box-shadow:var(--shadow); backdrop-filter:blur(6px); padding:20px; margin-bottom:18px; }
+    h2.sec{ margin:4px 0 10px; font-family:"Cinzel",serif; color:#5a1010; }
+    p.text{ color:#573d2f; }
+    .grid{ display:grid; gap:16px; }
+    @media (min-width:768px){ .grid.cols-2{ grid-template-columns: 1fr 1fr; } }
+
+    .kv{ display:grid; grid-template-columns: 140px 1fr; gap:10px; }
+    .kv div{ padding:10px; border-radius:10px; background:rgba(255,255,255,.6); border:1px solid rgba(212,175,55,.35); color:#5a1010; }
+
+    .contact-card{
+      display:grid; gap:10px; padding:14px; border-radius:14px; background:rgba(255,255,255,.65);
+      border:1px solid rgba(212,175,55,.4); color:#5a1010;
+    }
+
+    .modal{
+      display:none; position:fixed; inset:0; z-index:50; background: rgba(0,0,0,0.55);
+      justify-content:center; align-items:center; padding:16px;
+    }
+    .modal-content{
+      width:min(560px, 95vw); background: rgba(255,249,239,0.95);
+      border:1px solid rgba(212,175,55,0.5); border-radius:16px; padding:18px;
+      box-shadow: 0 18px 50px rgba(122,31,31,0.3);
+      max-height: 90vh; overflow-y: auto;
+    }
+    .field{
+      width:100%; padding:11px 12px; margin:8px 0; border-radius:12px; border:1px solid rgba(165,58,45,0.25); background:#fff; font-size:15px;
+    }
+    .close-x{ position:absolute; right:14px; top:12px; background:transparent; border:none; font-size:22px; cursor:pointer; color:#7a1f1f; }
+
+    .ticker{ position:sticky; bottom:0; z-index:10; display:flex; gap:16px; align-items:center; overflow:hidden;
+      background:linear-gradient(90deg, rgba(122,31,31,0.95), rgba(165,58,45,0.95));
+      border-top:1px solid rgba(212,175,55,.55); color:#fff; padding:8px 12px; }
+    .ticker small{ color:#ffe8b0 } .marquee{ white-space:nowrap; overflow:hidden; width:100%; } .marquee span{ display:inline-block; padding-left:100%; animation:scroll 22s linear infinite; }
+    @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-100%)} }
+    @media (max-width:640px){ .brand .title{ display:none; } }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar" aria-label="Main menu">
+    <div class="brand-row"><span class="om">ॐ</span><span class="title">Mahārājñī</span></div>
+    <div class="side-section-title">Menu</div>
+    <nav>
+      <a class="side-link" href="index.html">HOME</a>
+      <a class="side-link" href="about.html">ABOUT US</a>
+      <a class="side-link" href="contact.html">CONTACT</a>
+      <a class="side-link" href="index.html#collections">ALL DEVIS STOTRAS</a>
+      <a class="side-link" href="#">LALITA DEVI</a>
+      <a class="side-link" href="#">KALI</a>
+      <a class="side-link" href="#">LAKSHMI</a>
+      <a class="side-link" href="#">SARASWATHI</a>
+    </nav>
+  </aside>
+
+  <!-- Page -->
+  <div class="page">
+    <header>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span class="bar"></span></button>
+        <div class="brand"><span class="om-symbol">ॐ</span><div class="title">Mahārājñī</div></div>
+      </div>
+      <div>
+        <button class="btn" id="adminLoginBtn">🔑 Admin Login</button>
+      </div>
+    </header>
+
+    <section class="hero" id="hero" role="img" aria-label="Contact banner">
+      <div class="hero-inner">
+        <h1>Contact Us</h1>
+        <p>Questions, contributions, or blessings to share — the team would be happy to hear.</p>
+      </div>
+    </section>
+
+    <main class="container">
+      <section class="section">
+        <h2 class="sec">Reach Out</h2>
+        <div class="grid cols-2">
+          <div class="contact-card" id="contactCard">
+            <div><strong>Phone:</strong> <span id="cPhone">—</span></div>
+            <div><strong>Email:</strong> <span id="cEmail">—</span></div>
+            <div><strong>Location:</strong> <span id="cLocation">—</span></div>
+            <div id="cMapWrap" style="display:none"></div>
+          </div>
+          <div class="section">
+            <h2 class="sec">Timings</h2>
+            <div class="kv">
+              <div>Weekdays</div><div>09:00 — 18:00 IST</div>
+              <div>Weekend</div><div>10:00 — 14:00 IST</div>
+              <div>Response</div><div>Within 1–2 business days</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="sec">Message</h2>
+        <p class="text">For uploads or corrections, please include stotra/mantra name, language, and source details.</p>
+        <a class="btn" href="mailto:admin@maharajni.example">Email Now</a>
+        <button class="btn" id="editContactBtn" style="margin-left:8px; display:none;">✏️ Edit Contact</button>
+      </section>
+    </main>
+
+    <div class="ticker" aria-hidden="true">
+      <small>ॐ देवी नमः • </small>
+      <div class="marquee"><span>:|| ಇಚ್ಛಾ ಶಕ್ತಿ ಜ್ಞಾನ ಶಕ್ತಿ ಕ್ರಿಯಾ ಶಕ್ತಿ ಸ್ವರೂಪಿಣೀ ||: • :|| इच्छाशक्ति ज्ञानशक्ति क्रियाशक्ति स्वरूपिणी ||: • :|| இச்சா சக்தி ஞான சக்தி கிரியா சக்தி ஸ்வரூபிணி ||: • She who is of the nature of Will-power, Knowledge-power, and Action-power.</span></div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="modal" id="loginModal" role="dialog" aria-modal="true">
+    <div class="modal-content" style="position:relative">
+      <button class="close-x" data-close="#loginModal">✕</button>
+      <h2 style="text-align:center; color:#5a1010; font-family:'Cinzel',serif; margin:4px 0 10px;">Admin Login</h2>
+      <input class="field" type="text" id="username" placeholder="Username" />
+      <input class="field" type="password" id="password" placeholder="Password" />
+      <button class="btn" style="width:100%" id="doLogin">Login</button>
+    </div>
+  </div>
+
+  <!-- Edit Contact Modal -->
+  <div class="modal" id="editModal" role="dialog" aria-modal="true">
+    <div class="modal-content" style="position:relative">
+      <button class="close-x" data-close="#editModal">✕</button>
+      <h2 style="text-align:center; color:#5a1010; font-family:'Cinzel',serif; margin:4px 0 10px;">Edit Contact</h2>
+      <form id="contactForm">
+        <input class="field" type="text" name="phone" id="fPhone" placeholder="Phone (e.g., +91-XXXXXXXXXX)" />
+        <input class="field" type="email" name="email" id="fEmail" placeholder="Email" />
+        <input class="field" type="text" name="location" id="fLocation" placeholder="Location (City, State, Country)" />
+        <textarea class="field" name="map_embed" id="fMap" placeholder="Optional Google Map iframe embed"></textarea>
+        <input class="field" type="url" name="hero_image_url" id="fHero" placeholder="Optional hero background image URL" />
+        <button class="btn" type="submit" style="width:100%">Save</button>
+      </form>
+    </div>
+  </div>
+
+<script>
+  const API_URL = "https://manthras-7.onrender.com";
+
+  // Sidebar toggle
+  const bodyEl = document.body;
+  const hamburger = document.getElementById('hamburger');
+  function setSidebar(open){
+    if(open){ bodyEl.classList.add('with-sidebar'); hamburger.setAttribute('aria-expanded','true'); }
+    else{ bodyEl.classList.remove('with-sidebar'); hamburger.setAttribute('aria-expanded','false'); }
+  }
+  function toggleSidebar(){ setSidebar(!bodyEl.classList.contains('with-sidebar')); }
+  hamburger.addEventListener('click', toggleSidebar);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setSidebar(false); });
+  document.addEventListener('click', (e)=>{
+    const sidebar = document.getElementById('sidebar');
+    if(!sidebar.contains(e.target) && !hamburger.contains(e.target) && bodyEl.classList.contains('with-sidebar')){
+      setSidebar(false);
+    }
+  });
+
+  // Modal helpers
+  function openModal(sel){ document.querySelector(sel).style.display='flex'; }
+  function closeModal(sel){ document.querySelector(sel).style.display='none'; }
+  document.querySelectorAll('.close-x').forEach(btn=>{
+    btn.addEventListener('click', ()=> closeModal(btn.getAttribute('data-close')));
+  });
+
+  // State: simple in-memory “isAdmin” (use JWT/cookies later if needed)
+  let isAdmin = false;
+
+  // Fetch and render contact profile
+  async function loadContact(){
+    try{
+      const res = await fetch(API_URL + "/contact", { mode:"cors" });
+      const c = await res.json();
+      document.getElementById('cPhone').textContent = c.phone || '—';
+      document.getElementById('cEmail').textContent = c.email || '—';
+      document.getElementById('cLocation').textContent = c.location || '—';
+
+      // Optional map
+      const mapWrap = document.getElementById('cMapWrap');
+      if (c.map_embed && c.map_embed.toLowerCase().includes('<iframe')) {
+        mapWrap.innerHTML = c.map_embed;
+        mapWrap.style.display = 'block';
+      } else {
+        mapWrap.innerHTML = '';
+        mapWrap.style.display = 'none';
+      }
+
+      // Optional hero image override
+      if (c.hero_image_url) {
+        document.getElementById('hero').style.backgroundImage = `url('${c.hero_image_url}')`;
+      }
+
+      // Pre-fill edit form
+      document.getElementById('fPhone').value = c.phone || '';
+      document.getElementById('fEmail').value = c.email || '';
+      document.getElementById('fLocation').value = c.location || '';
+      document.getElementById('fMap').value = c.map_embed || '';
+      document.getElementById('fHero').value = c.hero_image_url || '';
+
+    }catch(e){
+      console.error(e);
+      alert("Failed to load contact details");
+    }
+  }
+
+  // Admin Login
+  document.getElementById('adminLoginBtn').addEventListener('click', ()=> openModal('#loginModal'));
+  document.getElementById('doLogin').addEventListener('click', async ()=>{
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value.trim();
+    if(!u || !p) return alert("Enter credentials");
+    const fd = new FormData();
+    fd.append('username', u); fd.append('password', p);
+    try{
+      const res = await fetch(API_URL + "/auth/login", { method:"POST", body: fd, mode:"cors" });
+      if(!res.ok) throw new Error("Invalid login");
+      await res.json();
+      isAdmin = true;
+      document.getElementById('editContactBtn').style.display = 'inline-flex';
+      closeModal('#loginModal');
+      alert("Admin logged in");
+    }catch(err){ alert(err.message); }
+  });
+
+  // Open edit form
+  document.getElementById('editContactBtn').addEventListener('click', ()=>{
+    if(!isAdmin) return alert("Admin login required");
+    openModal('#editModal');
+  });
+
+  // Save contact profile
+  document.getElementById('contactForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    if(!isAdmin) return alert("Admin login required");
+    const fd = new FormData(e.target);
+    try{
+      const res = await fetch(API_URL + "/contact", { method:"POST", body: fd, mode:"cors" });
+      if(!res.ok) throw new Error("Save failed");
+      const data = await res.json();
+      closeModal('#editModal');
+      await loadContact();
+      alert(data.message || "Saved");
+    }catch(err){
+      alert(err.message);
+    }
+  });
+
+  loadContact();
+</script>
+</body>
+</html>

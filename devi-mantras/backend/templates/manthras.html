@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌺 Mahārājñī</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --saffron:#F1C338; --maroon:#7A1F1F; --kumkum:#A53A2D; --gold:#D4AF37; --ivory:#FFF7EA;
+      --card-bg:rgba(255,247,234,0.75); --shadow:0 10px 30px rgba(122,31,31,0.18);
+      --sidebar-w: 260px; --sidebar-gap: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{ margin:0; height:100%; scroll-behavior:smooth; background: radial-gradient(2000px 1200px at 80% -10%, rgba(244,220,170,0.35), transparent 60%), radial-gradient(1800px 900px at -10% 10%, rgba(241,195,56,0.25), transparent 55%), linear-gradient(180deg, #FFF9EF 0%, #FDEFD4 100%); color:#4a2c2a; font-family:"Noto Serif Devanagari","Georgia",serif; } 
+    @media (min-width: 1024px) { body { position: relative; } body::before{ content:""; position: fixed; inset: 0; z-index:-1; background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("LALITHA_IMAGE_URL") center center / cover no-repeat fixed; pointer-events:none; will-change: transform; } }
+    /* Sidebar */
+    .sidebar{
+      position:fixed; inset:0 auto 0 0; width:var(--sidebar-w); z-index:30; overflow-y:auto;
+      background:linear-gradient(180deg,#6d1b1b 0%,#9e3a2f 100%); border-right:1px solid rgba(212,175,55,.5);
+      color:#ffe8c9; box-shadow:8px 0 28px rgba(0,0,0,.25);
+      transform:translateX(calc(-1 * var(--sidebar-w) - 10px)); transition:transform .35s ease;
+      padding:14px 0;
+    }
+    .with-sidebar .sidebar{ transform:translateX(0); }
+    .sidebar .brand-row{ display:flex; align-items:center; gap:8px; padding:10px 16px 12px 18px; }
+    .sidebar .om{ font-size:26px; color:#ffdd00; }
+    .sidebar .title{ font-family:"Cinzel",serif; font-weight:700; letter-spacing:.3px; }
+    .side-section-title{ margin:12px 16px 6px; color:#ffd88a; font-size:12px; text-transform:uppercase; letter-spacing:.8px; opacity:.95; }
+    .side-link{ display:flex; align-items:center; gap:10px; padding:12px 16px; margin:0 8px; border-radius:10px; color:#ffe8c9; text-decoration:none; font-weight:600; letter-spacing:.2px; border:1px solid transparent; }
+    .side-link:hover{ background:rgba(241,195,56,.12); border-color:rgba(241,195,56,.35); transform:translateX(3px); transition:.2s; }
+
+    /* Page wrapper */
+    .page{ min-height:100%; transition:transform .35s ease; }
+    .with-sidebar .page{ transform:translateX(calc(var(--sidebar-w) + var(--sidebar-gap))); }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between;
+      padding:12px 16px; background:linear-gradient(90deg, rgba(122,31,31,0.92), rgba(165,58,45,0.92));
+      border-bottom:1px solid rgba(212,175,55,.55); backdrop-filter:blur(6px);
+    }
+    .brand{ display:flex; align-items:center; gap:10px; color:#fff5e1; }
+    .om-symbol{ font-size:28px; color:#ffdd00; }
+    .title{ font-family:"Georgia",serif; font-size:20px; letter-spacing:1px; }
+    .hamburger{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; margin-right:10px; border-radius:10px; border:1px solid rgba(212,175,55,.5); background:rgba(255,255,255,.05); cursor:pointer; }
+    .hamburger .bar{ position:relative; width:20px; height:2px; background:#ffdd99; border-radius:2px; }
+    .hamburger .bar::before,.hamburger .bar::after{ content:""; position:absolute; left:0; width:20px; height:2px; background:#ffdd99; border-radius:2px; }
+    .hamburger .bar::before{ top:-6px; } .hamburger .bar::after{ top:6px; }
+    .btn{ background:linear-gradient(180deg,var(--saffron),#E6B52C); color:#3b240b; border:none; padding:10px 18px; border-radius:10px; font-weight:700; cursor:pointer; box-shadow:0 6px 16px rgba(241,195,56,.35); }
+
+    /* Hero */
+    .hero{
+      position:relative; display:grid; place-items:center; text-align:center; padding:48px 20px;
+      background:url('https://images.unsplash.com/photo-1508711043262-0a1a0753f0e8?q=80&w=1200&auto=format&fit=crop') no-repeat center/cover;
+    }
+    .hero::after{ content:""; position:absolute; inset:0; background: radial-gradient(ellipse at center, rgba(255,255,255,0.6), rgba(255,255,255,0.1) 60%, transparent 75%); }
+    .hero-inner{ position:relative; z-index:1; max-width:920px; }
+    .hero h1{ margin:10px 0 8px; font-family:"Cinzel",serif; font-size:clamp(28px,5vw,48px); color:#5a1010; text-shadow:0 1px 0 #fff, 0 8px 24px rgba(122,31,31,0.28); }
+    .hero p{ margin:0 auto; max-width:760px; color:#5b3a2a; background:rgba(255,255,255,.7); padding:12px 16px; border-radius:12px; border:1px solid rgba(212,175,55,.3); }
+
+    .search-wrap{ position:relative; z-index:2; margin: 18px auto 6px; display:flex; justify-content:center; gap:10px; max-width:860px; padding:0 16px; }
+    .input,.select{
+      flex:1; min-width:220px; padding:12px 14px; font-size:16px; border-radius:12px; border:1px solid rgba(165,58,45,0.25);
+      background: rgba(255,255,255,0.85); outline:none; transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+      box-shadow: inset 0 0 0 rgba(0,0,0,0);
+    }
+    .input:focus,.select:focus{ border-color: var(--kumkum); box-shadow: 0 8px 22px rgba(165,58,45,0.12); transform: translateY(-1px); }
+
+    .section-title{ margin:30px auto 10px; padding:0 20px; max-width:1100px; display:flex; align-items:center; gap:14px; color:#6b2a2a; font-weight:700; letter-spacing:.4px; }
+    .section-title::before,.section-title::after{ content:""; flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+    /* Category heading used in grouped mode */
+    .category-title{
+      margin:26px auto 8px; padding:0 20px; max-width:1100px;
+      color:#5a1010; font-family:"Cinzel",serif; font-size:24px; letter-spacing:.8px; font-weight:700;
+      text-align:left;
+    }
+
+    .cards{ position:relative; z-index:1; display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:22px; padding: 10px 24px 40px; max-width:1200px; margin: 0 auto; }
+    .card{ position:relative; overflow:hidden; border-radius:16px; background: var(--card-bg); border:1px solid rgba(212,175,55,0.35); box-shadow: var(--shadow); transform: translateY(0); transition: transform .25s ease, box-shadow .25s ease; backdrop-filter: blur(6px); }
+    .card:hover{ transform: translateY(-6px); box-shadow: 0 16px 38px rgba(122,31,31,0.24) }
+    .card::before{ content:""; position:absolute; inset: -20% -20% auto -20%; height:60%; transform: rotate(8deg); background: radial-gradient(ellipse at top left, rgba(241,195,56,0.18), transparent 60%); transition: opacity .3s ease; opacity:.8; }
+    .card:hover::before{ opacity:1 }
+    .card img{ width:100%; height:320px; object-fit: cover; display:block; border-bottom:1px solid rgba(212,175,55,0.35); filter: saturate(1.02) contrast(1.02); transition: transform .4s ease; }
+    @media (max-width:640px){ .card img{ height:200px } }
+    .card:hover img{ transform: scale(1.03) }
+    .card-inner{ padding:14px 14px 10px }
+    .card h3{ margin:6px 0 2px; font-size:20px; color:#5a1010; font-family:"Cinzel",serif; letter-spacing:.3px; }
+    .meta{ font-size:14px; color:#7a4d3a; margin-bottom:8px }
+    .card p{ margin:0 0 12px; color:#573d2f; line-height:1.55 }
+    .link{ display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:700; color:#3b240b; background: linear-gradient(180deg, var(--saffron), #E6B52C); padding:8px 12px; border-radius:10px; box-shadow: 0 6px 16px rgba(241,195,56,0.28); transition: transform .2s ease, box-shadow .2s ease; }
+    .link:hover{ transform: translateY(-2px); box-shadow: 0 10px 22px rgba(241,195,56,0.38) }
+
+    /* Category label under each card */
+    .cat-line{
+      display:block; margin:10px 14px 14px; padding:6px 10px; border-radius:10px;
+      background:rgba(241,195,56,.18); color:#5a1010; font-weight:700; border:1px solid rgba(212,175,55,.45);
+    }
+
+    .modal{ display:none; position:fixed; inset:0; z-index:50; background: rgba(0,0,0,0.55); justify-content:center; align-items:center; padding:16px; }
+    .modal-content{ width:min(520px, 95vw); background: rgba(255,249,239,0.95); border:1px solid rgba(212,175,55,0.5); border-radius:16px; padding:18px; box-shadow: 0 18px 50px rgba(122,31,31,0.3); max-height: 90vh; overflow-y: auto; }
+    #viewMantraModal .modal-content { width: min(700px, 95vw); }
+    .close-x{ position:absolute; right:14px; top:12px; background:transparent; border:none; font-size:22px; cursor:pointer; color:#7a1f1f; }
+    .field{ width:100%; padding:11px 12px; margin:8px 0; border-radius:12px; border:1px solid rgba(165,58,45,0.25); background:#fff; font-size:15px; }
+    .view-image{ width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; object-fit: contain; background:#fff7ea; }
+    .view-section { margin-bottom: 20px; }
+    .view-section h3 { color: var(--maroon); margin-bottom: 8px; }
+    .view-audio audio { width: 100%; }
+
+    .switcher{ display:flex; justify-content:center; gap:8px; margin: 12px auto 0; }
+    .switcher button{ padding:8px 12px; border-radius:10px; border:1px solid rgba(212,175,55,.5); background:rgba(255,255,255,.15); color:#fff; cursor:pointer; }
+    .switcher button.active{ background:linear-gradient(180deg,var(--saffron),#E6B52C); color:#3b240b; font-weight:700; }
+
+    .ticker{ position:sticky; bottom:0; z-index:10; display:flex; gap:16px; align-items:center; overflow:hidden;
+      background:linear-gradient(90deg, rgba(122,31,31,0.95), rgba(165,58,45,0.95));
+      border-top:1px solid rgba(212,175,55,.55); color:#ffffff; padding:8px 12px; }
+    .ticker small{ color:#ffe8b0 } .marquee{ white-space:nowrap; overflow:hidden; width:100%; } .marquee span{ display:inline-block; padding-left:100%; animation:scroll 22s linear infinite; }
+    @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-100%)} }
+
+    @media (max-width:640px){ .brand .title{ display:none; } }
+
+    .switcher button {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(212, 175, 55, .5);
+      background: rgb(233 185 47);
+      color: #fff;
+      cursor: pointer;
+  }
+
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar" aria-label="Main menu">
+    <div class="brand-row"><span class="om">ॐ</span><span class="title">Mahārājñī</span></div>
+    <div class="side-section-title">Menu</div>
+    <nav>
+      <a class="side-link" href="index.html">HOME</a>
+      <a class="side-link" href="about_us.html">ABOUT US</a>
+      <a class="side-link" href="contact.html">CONTACT</a>
+      <a class="side-link cat-link" data-cat="LALITA DEVI" href="#cat-LALITA DEVI">LALITA DEVI</a>
+      <a class="side-link cat-link" data-cat="TITHINITYA DEVI" href="#cat-TITHINITYA DEVI">TITHINITYA DEVI</a>
+      <a class="side-link cat-link" data-cat="BALA TRIPURA SUNDARI" href="#cat-BALA TRIPURA SUNDARI">BALA TRIPURA SUNDARI</a>
+      <a class="side-link cat-link" data-cat="KALI" href="#cat-KALI">KALI</a>
+      <a class="side-link cat-link" data-cat="LAKSHMI" href="#cat-LAKSHMI">LAKSHMI</a>
+      <a class="side-link cat-link" data-cat="SARASWATHI" href="#cat-SARASWATHI">SARASWATHI</a>
+      <a class="side-link" href="papers.html">PAPERS</a>
+    </nav>
+  </aside>
+
+  <!-- Page -->
+  <div class="page">
+    <header>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span class="bar"></span></button>
+        <div class="brand"><span class="om-symbol">ॐ</span><div class="title">Mahārājñī</div></div>
+      </div>
+      <div><button class="btn" id="adminLoginBtn">🔑 Admin Login</button></div>
+    </header>
+
+    <section class="hero" role="img" aria-label="Sacred background">
+      <div class="hero-inner">
+        <h1>||ॐ ಶ್ರೀ ಲಲಿತಾಂಬಿಕಾಯೈ ನಮಃ||</h1>
+        <p>Explore sacred stotras and mantras of the Divine Mother in text, audio, and visuals to invoke devotion, clarity, and experience divine mother presence.</p>
+        <div class="switcher" role="tablist" aria-label="View switch">
+          <button id="btnAll" class="active" aria-selected="true">All Mantras</button>
+          <button id="btnGrouped" aria-selected="false">By Category</button>
+        </div>
+        <div class="search-wrap" id="searchRow">
+          <input class="input" type="text" id="search" placeholder="Search mantra or stotra name..." />
+          <select class="select" id="languageFilter">
+            <option value="all">All Languages</option>
+            <option value="kannada">Kannada</option>
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+            <option value="tamil">Tamil</option>
+            <option value="sanskrit">Sanskrit</option>
+          </select>
+          <button class="btn" id="searchBtn">Search</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Persistent wrapper: title + sections holder -->
+    <div id="contentWrapper">
+      <div class="section-title">Sacred Collections</div>
+      <div id="sectionsHolder"></div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="modal" id="loginModal" role="dialog" aria-modal="true">
+      <div class="modal-content" style="position:relative">
+        <button class="close-x" data-close="#loginModal">✕</button>
+        <h2 style="text-align:center; color:#5a1010; font-family:'Cinzel',serif; margin:4px 0 10px;">Admin Login</h2>
+        <input class="field" type="text" id="username" placeholder="Username" />
+        <input class="field" type="password" id="password" placeholder="Password" />
+        <button class="btn" id="doLogin" style="width:100%">Login</button>
+      </div>
+    </div>
+
+    <!-- Upload Mantra Modal -->
+    <div class="modal" id="uploadModal" role="dialog" aria-modal="true">
+      <div class="modal-content" style="position:relative">
+        <button class="close-x" data-close="#uploadModal">✕</button>
+        <h2 style="text-align:center; color:#5a1010; font-family:'Cinzel',serif; margin:4px 0 10px;">Upload Mantra</h2>
+        <form id="uploadForm">
+          <input class="field" type="text" name="mantra_name" placeholder="Mantra Name" required />
+          <select class="field" name="language" required>
+            <option value="kannada">Kannada</option>
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+            <option value="tamil">Tamil</option>
+            <option value="sanskrit">Sanskrit</option>
+          </select>
+          <select class="field" name="category" required>
+            <option value="LALITA DEVI">LALITA DEVI</option>
+            <option value="TITHINITYA DEVI">TITHINITYA DEVI</option>
+            <option value="BALA TRIPURA SUNDARI">BALA TRIPURA SUNDARI</option>
+            <option value="KALI">KALI</option>
+            <option value="LAKSHMI">LAKSHMI</option>
+            <option value="SARASWATHI">SARASWATHI</option>
+          </select>
+          <textarea class="field" name="description" placeholder="Description (optional)"></textarea>
+          <label>PDF (required)</label>
+          <input class="field" type="file" name="pdf" accept="application/pdf" required />
+          <label>Image (required)</label>
+          <input class="field" type="file" name="image" accept="image/*" required />
+          <label>Audio (optional)</label>
+          <input class="field" type="file" name="audio" accept="audio/*" />
+          <button class="btn" type="submit" style="width:100%">Upload</button>
+        </form>
+      </div>
+    </div>
+
+<!-- --------------------------------------------------------------------------------------------------------------------- -->
+
+    <!-- NEW: Admin quick actions bar (visible only after login) -->
+<div id="adminBar" style="display:none; position:sticky; top:60px; z-index:15; padding:10px 16px; background:rgba(255,249,239,.95); border-bottom:1px solid rgba(212,175,55,.4); display:flex; gap:10px; justify-content:flex-end;">
+  <button class="btn" id="btnOpenUpload">➕ Add Mantra</button>
+  <button class="btn" id="btnManageEvents">📅 Manage Events</button>
+</div>
+
+<!-- NEW: Edit Mantra Modal -->
+<div class="modal" id="editMantraModal" role="dialog" aria-modal="true">
+  <div class="modal-content" style="position:relative">
+    <button class="close-x" data-close="#editMantraModal">✕</button>
+    <h2 style="text-align:center; color:#5a1010; font-family:'Cinzel',serif; margin:4px 0 10px;">Edit Mantra</h2>
+    <form id="editMantraForm">
+      <input type="hidden" name="mantra_id" />
+      <input class="field" type="text" name="mantra_name" placeholder="Mantra Name" required />
+      <select class="field" name="language" required>
+        <option value="kannada">Kannada</option>
+        <option value="english">English</option>
+        <option value="hindi">Hindi</option>
+        <option value="tamil">Tamil</option>
+        <option value="sanskrit">Sanskrit</option>
+      </select>
+      <select class="field" name="category" required>
+        <option value="LALITA DEVI">LALITA DEVI</option>
+        <option value="TITHINITYA DEVI">TITHINITYA DEVI</option>
+        <option value="BALA TRIPURA SUNDARI">BALA TRIPURA SUNDARI</option>
+        <option value="KALI">KALI</option>
+        <option value="LAKSHMI">LAKSHMI</option>
+        <option value="SARASWATHI">SARASWATHI</option>
+      </select>
+      <textarea class="field" name="description" placeholder="Description"></textarea>
+      <label>Replace PDF (optional)</label>
+      <input class="field" type="file" name="pdf" accept="application/pdf" />
+      <label>Replace Image (optional)</label>
+      <input class="field" type="file" name="image" accept="image/*" />
+      <label>Replace Audio (optional)</label>
+      <input class="field" type="file" name="audio" accept="audio/*" />
+      <button class="btn" type="submit" style="width:100%">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+<!-- NEW: Events Manager Modal -->
+<div class="modal" id="eventsModal" role="dialog" aria-modal="true">
+  <div class="modal-content" style="position:relative">
+    <button class="close-x" data-close="#eventsModal">✕</button>
+    <h2 style="text-align:center; color:#5a1010; font-family:'Cinzel',serif; margin:4px 0 10px;">Manage Events</h2>
+
+    <!-- Create Event -->
+    <fieldset style="border:1px solid rgba(212,175,55,.4); border-radius:12px; padding:12px; margin-bottom:14px;">
+      <legend>Create Event</legend>
+      <form id="createEventForm">
+        <input class="field" type="text" name="name" placeholder="Event Name" required />
+        <textarea class="field" name="description" placeholder="Description (optional)"></textarea>
+        <label>Image (optional)</label>
+        <input class="field" type="file" name="image" accept="image/*" />
+        <label>PDF (optional)</label>
+        <input class="field" type="file" name="pdf" accept="application/pdf" />
+        <button class="btn" type="submit" style="width:100%">Create</button>
+      </form>
+    </fieldset>
+
+    <!-- List / Edit Events -->
+    <div id="eventsList"></div>
+  </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+    <!-- View Mantra Modal -->
+    <div class="modal" id="viewMantraModal" role="dialog" aria-modal="true">
+      <div class="modal-content" style="position:relative">
+        <button class="close-x" data-close="#viewMantraModal">✕</button>
+        <h2 id="viewTitle" style="text-align:center; color:#5a1010; font-family:'Cinzel',serif;"></h2>
+        <div class="view-section">
+          <h3>Image</h3>
+          <img id="viewImage" class="view-image" src="" alt="Mantra Image" />
+        </div>
+        <div class="view-section">
+          <h3>Description</h3>
+          <p id="viewDescription"></p>
+        </div>
+        <div class="view-section view-audio">
+          <h3>Audio</h3>
+          <audio id="viewAudio" controls></audio>
+        </div>
+        <div class="view-section view-pdf">
+          <h3>PDF</h3>
+          <a id="viewPdfLink" href="#" target="_blank" rel="noopener" class="link">View PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <small>ॐ देवी ನಮಃ • </small>
+      <div class="marquee"><span>:|| ಇಚ್ಛಾ ಶಕ್ತಿ ಜ್ಞಾನ ಶಕ್ತಿ ಕ್ರಿಯಾ ಶಕ್ತಿ ಸ್ವರೂಪಿಣೀ ||: • :|| इच्छाशक्ति ज्ञानशक्ति क्रियाशक्ति स्वरूपिणी ||: • :|| இச்சா சக்தி ஞான சக்தி கிரியா சக்தி ஸ்வரூபிணி ||: • She who is of the nature of Will-power, Knowledge-power, and Action-power.</span></div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  'use strict';
+
+  const API_URL = "https://manthras-7.onrender.com"; // ensure server sends correct CORS headers and cookies if used [web:32]
+  const CATEGORY_ORDER = ["LALITA DEVI","TITHINITYA DEVI","BALA TRIPURA SUNDARI","KALI","LAKSHMI","SARASWATHI"]; // [web:1]
+
+  // If backend uses cookie sessions, set this to 'include' for all authenticated endpoints
+  const CRED = 'same-origin'; // change to 'include' if auth uses cross-origin cookies [web:26][web:32]
+
+  let isAdmin = false; // toggled after successful login [web:1]
+  let currentView = 'all'; // 'all' | 'grouped' for refresh after mutations [web:1]
+
+  function debounce(fn, delay=250){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a),delay);} } // [web:13][web:10]
+
+  function openModal(sel){ const el = document.querySelector(sel); if(el) el.style.display='flex'; } // [web:1]
+  function closeModal(sel){ const el = document.querySelector(sel); if(el) el.style.display='none'; } // [web:1]
+
+  function catBadgeHTML(cat){ return cat ? `<span class="cat-line">${cat}</span>` : ""; } // [web:1]
+
+  // Admin action buttons for each card when logged in
+  function adminCardActionsHTML(m){
+    if(!isAdmin) return "";
+    return `
+      <div style="display:flex; gap:8px; margin:0 14px 14px;">
+        <button class="btn btn-edit" data-edit-id="${m._id}">✏️ Edit</button>
+        <button class="btn btn-delete" data-del-id="${m._id}" style="background:#c54141;color:#fff;">🗑️ Delete</button>
+      </div>
+    `;
+  } // [web:1]
+
+  function cardHTML(m){
+    const imgSrc = m.image_url ? `${API_URL}${m.image_url}` :
+      "https://images.unsplash.com/photo-1508711043262-0a1a0753f0e8?q=80&w=1200&auto=format&fit=crop";
+    const desc = m.description ? (m.description.length>100 ? m.description.slice(0,100)+"…" : m.description) : "No description.";
+    const lang = m.language || "—";
+    const cat = m.category || "";
+    return `
+      <div class="card" tabindex="0">
+        <img src="${imgSrc}" alt="${m.name || 'Mantra'}" loading="lazy" />
+        <div class="card-inner">
+          <h3>${m.name || "Untitled Mantra"}</h3>
+          <div class="meta">Language: ${lang}</div>
+          <p>${desc}</p>
+          <button class="link" data-view-id="${m._id || ''}">📜 View Details</button>
+        </div>
+        ${catBadgeHTML(cat)}
+        ${adminCardActionsHTML(m)}
+      </div>
+    `;
+  } // [web:1]
+
+  function filterMantras(mantras){
+    const search = (document.getElementById("search")?.value || "").toLowerCase();
+    const lang = (document.getElementById("languageFilter")?.value || "all").toLowerCase();
+    return mantras.filter(m => {
+      const nm = (m.name || "").toLowerCase();
+      const lg = (m.language || "").toLowerCase();
+      return nm.includes(search) && (lang==="all" || lg===lang);
+    });
+  } // [web:1]
+
+  async function viewMantraDetails(mantraId){
+    if(!mantraId) return;
+    try{
+      const res = await fetch(`${API_URL}/mantras/${mantraId}`, { mode:"cors", credentials:CRED });
+      if(!res.ok) throw new Error("Details failed");
+      const mantra = await res.json();
+      const t = document.getElementById("viewTitle");
+      const d = document.getElementById("viewDescription");
+      const img = document.getElementById("viewImage");
+      const aud = document.getElementById("viewAudio");
+      const pdf = document.getElementById("viewPdfLink");
+      if(t) t.textContent = mantra.name || "Untitled Mantra";
+      if(d) d.textContent = mantra.description || "No description.";
+      if(img){ if(mantra.image_url){ img.src = `${API_URL}${mantra.image_url}`; img.style.display='block'; } else img.style.display='none'; }
+      if(aud){ if(mantra.audio_url){ aud.src = `${API_URL}${mantra.audio_url}`; aud.style.display='block'; } else aud.style.display='none'; }
+      if(pdf){ if(mantra.pdf_url){ pdf.href = `${API_URL}${mantra.pdf_url}`; pdf.style.display='inline-flex'; } else pdf.style.display='none'; }
+      openModal('#viewMantraModal');
+    }catch(e){ alert("Could not load mantra details."); }
+  } // [web:6][web:30]
+
+  async function fetchAllMantras(){
+    const res = await fetch(API_URL + "/mantras", { mode:"cors", credentials:CRED });
+    if(!res.ok) throw new Error("Failed to load mantras");
+    return res.json();
+  } // [web:6][web:30]
+
+  async function loadAll(){
+    currentView = 'all';
+    try{
+      const mantras = filterMantras(await fetchAllMantras());
+      const wrapper = document.getElementById('contentWrapper');
+      const topTitle = wrapper?.querySelector('.section-title');
+      const sectionsHolder = document.getElementById('sectionsHolder');
+      if(topTitle){ topTitle.style.display='flex'; topTitle.textContent = "All Mantras"; }
+      if(sectionsHolder){
+        sectionsHolder.innerHTML = `<div class="cards">${mantras.map(cardHTML).join("")}</div>`;
+        wireCardButtons(sectionsHolder);
+      }
+    }catch(e){
+      const sectionsHolder = document.getElementById('sectionsHolder');
+      if(sectionsHolder) sectionsHolder.innerHTML = `<div style="grid-column:1/-1; text-align:center">Failed to load mantras.</div>`;
+    }
+  } // [web:1]
+
+  async function loadGrouped(){
+    currentView = 'grouped';
+    try{
+      // If no /mantras/grouped endpoint, fall back to client-side grouping
+      let groups;
+      const tryRes = await fetch(API_URL + "/mantras/grouped", { mode:"cors", credentials:CRED });
+      if(tryRes.ok){
+        groups = await tryRes.json();
+      } else {
+        const all = await fetchAllMantras();
+        groups = CATEGORY_ORDER.reduce((acc,cat)=> (acc[cat]=all.filter(m=>m.category===cat), acc), {});
+      }
+      const wrapper = document.getElementById('contentWrapper');
+      const topTitle = wrapper?.querySelector('.section-title');
+      const sectionsHolder = document.getElementById('sectionsHolder');
+      if(topTitle) topTitle.style.display='none';
+
+      if(sectionsHolder){
+        const sections = CATEGORY_ORDER.map(cat=>{
+          const list = groups[cat] || [];
+          const cards = list.length ? list.map(cardHTML).join("") :
+            `<div style="grid-column:1/-1;color:#5a1010;background:#fff7ea;padding:10px;border-radius:10px;">No mantras yet.</div>`;
+          return `
+            <a id="cat-${cat}"></a>
+            <h2 class="category-title">${cat}</h2>
+            <div class="cards">${cards}</div>
+          `;
+        }).join("");
+        sectionsHolder.innerHTML = sections;
+        wireCardButtons(sectionsHolder);
+      }
+    }catch(e){
+      const sectionsHolder = document.getElementById('sectionsHolder');
+      if(sectionsHolder) sectionsHolder.innerHTML = `<div style="grid-column:1/-1; text-align:center">Failed to load grouped mantras.</div>`;
+    }
+  } // [web:1]
+
+  function wireCardButtons(root){
+    // View
+    root.querySelectorAll('[data-view-id]').forEach(btn=>{
+      btn.addEventListener('click', ()=> viewMantraDetails(btn.getAttribute('data-view-id')));
+    });
+    if(!isAdmin) return;
+    // Edit
+    root.querySelectorAll('[data-edit-id]').forEach(btn=>{
+      btn.addEventListener('click', ()=> openEditFor(btn.getAttribute('data-edit-id')));
+    });
+    // Delete
+    root.querySelectorAll('[data-del-id]').forEach(btn=>{
+      btn.addEventListener('click', ()=> confirmDelete(btn.getAttribute('data-del-id')));
+    });
+  } // [web:1]
+
+  async function openEditFor(id){
+    try{
+      const res = await fetch(`${API_URL}/mantras/${id}`, { mode:"cors", credentials:CRED });
+      if(!res.ok) throw new Error("Load failed");
+      const m = await res.json();
+      const f = document.getElementById('editMantraForm');
+      f.mantra_id.value = id;
+      f.mantra_name.value = m.name || "";
+      f.language.value = (m.language || "").toLowerCase();
+      f.description.value = m.description || "";
+      f.category.value = m.category || "LALITA DEVI";
+      // clear file inputs
+      f.image.value = ""; f.pdf.value = ""; f.audio.value = "";
+      openModal('#editMantraModal');
+    }catch(e){ alert("Could not open editor."); }
+  } // [web:25][web:30]
+
+  async function confirmDelete(id){
+    if(!confirm("Delete this mantra? This cannot be undone.")) return;
+    try{
+      const res = await fetch(`${API_URL}/mantras/${id}`, { method:"DELETE", mode:"cors", credentials:CRED });
+      if(!res.ok) throw new Error("Delete failed");
+      await res.json();
+      await refreshAfterMutation();
+      alert("Mantra deleted.");
+    }catch(e){ alert("Deletion failed."); }
+  } // [web:21]
+
+  async function refreshAfterMutation(){
+    if(currentView==='grouped') await loadGrouped(); else await loadAll();
+  } // [web:1]
+
+  // Events
+  async function loadEventsIntoModal(){
+    const container = document.getElementById('eventsList');
+    if(!container) return;
+    container.innerHTML = `<div style="padding:8px; color:#7a4d3a;">Loading events…</div>`;
+    try{
+      const res = await fetch(`${API_URL}/events`, { mode:"cors", credentials:CRED });
+      if(!res.ok) throw new Error("Failed");
+      const events = await res.json();
+      if(!events.length){
+        container.innerHTML = `<div style="padding:8px; color:#7a4d3a;">No events yet.</div>`;
+        return;
+      }
+      container.innerHTML = events.map(e=>eventItemHTML(e)).join("");
+      wireEventItems(container);
+    }catch(e){
+      container.innerHTML = `<div style="padding:8px; color:#c54141;">Failed to load events.</div>`;
+    }
+  } // [web:21]
+
+  function eventItemHTML(e){
+    const img = e.image_url ? `${API_URL}${e.image_url}` : "";
+    const pdf = e.pdf_url ? `${API_URL}${e.pdf_url}` : "";
+    return `
+      <fieldset style="border:1px solid rgba(212,175,55,.35); border-radius:12px; padding:12px; margin:10px 0;">
+        <legend>${e.name} (${e._id})</legend>
+        <form class="eventForm" data-event-id="${e._id}">
+          <input class="field" type="text" name="name" value="${escapeHtml(e.name || '')}" placeholder="Event Name" />
+          <textarea class="field" name="description" placeholder="Description">${escapeHtml(e.description || '')}</textarea>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            ${img ? `<img src="${img}" alt="Event image" style="width:120px;height:auto;border-radius:8px;border:1px solid rgba(212,175,55,.35);" />` : ""}
+            ${pdf ? `<a class="link" href="${pdf}" target="_blank" rel="noopener">View PDF</a>` : ""}
+          </div>
+          <label>Replace Image</label>
+          <input class="field" type="file" name="image" accept="image/*" />
+          <label>Replace PDF</label>
+          <input class="field" type="file" name="pdf" accept="application/pdf" />
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <button class="btn btn-save-event" type="button" data-save-id="${e._id}">💾 Save</button>
+            <button class="btn btn-del-event" type="button" data-del-id="${e._id}" style="background:#c54141;color:#fff;">🗑️ Delete</button>
+          </div>
+        </form>
+      </fieldset>
+    `;
+  } // [web:27][web:33]
+
+  function wireEventItems(root){
+    root.querySelectorAll('[data-save-id]').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const id = btn.getAttribute('data-save-id');
+        const form = btn.closest('.eventForm');
+        const fd = new FormData();
+        const name = form.querySelector('input[name="name"]').value.trim();
+        const description = form.querySelector('textarea[name="description"]').value.trim();
+        if(name) fd.append('name', name);
+        if(description) fd.append('description', description);
+        const img = form.querySelector('input[name="image"]').files[0];
+        const pdf = form.querySelector('input[name="pdf"]').files[0];
+        if(img) fd.append('image', img);
+        if(pdf) fd.append('pdf', pdf);
+        try{
+          const res = await fetch(`${API_URL}/events/${id}`, { method:"PUT", body: fd, mode:"cors", credentials:CRED });
+          if(!res.ok) throw new Error("Update failed");
+          await res.json();
+          await loadEventsIntoModal();
+          alert("Event updated.");
+        }catch(e){ alert("Update failed."); }
+      });
+    });
+    root.querySelectorAll('[data-del-id]').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const id = btn.getAttribute('data-del-id');
+        if(!confirm("Delete this event?")) return;
+        try{
+          const res = await fetch(`${API_URL}/events/${id}`, { method:"DELETE", mode:"cors", credentials:CRED });
+          if(!res.ok) throw new Error("Delete failed");
+          await res.json();
+          await loadEventsIntoModal();
+          alert("Event deleted.");
+        }catch(e){ alert("Deletion failed."); }
+      });
+    });
+  } // [web:21]
+
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+  } // [web:14]
+
+  // Init on ready
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", init);
+  else init(); // [web:8]
+
+  function init(){
+    const bodyEl = document.body;
+    const hamburger = document.getElementById('hamburger');
+    function setSidebar(open){
+      if(open){ bodyEl.classList.add('with-sidebar'); hamburger?.setAttribute('aria-expanded','true'); }
+      else{ bodyEl.classList.remove('with-sidebar'); hamburger?.setAttribute('aria-expanded','false'); }
+    }
+    function toggleSidebar(){ setSidebar(!bodyEl.classList.contains('with-sidebar')); }
+    hamburger?.addEventListener('click', toggleSidebar); // [web:1]
+
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setSidebar(false); }); // [web:1]
+    document.addEventListener('click', (e)=>{
+      const sidebar = document.getElementById('sidebar');
+      if(sidebar && !sidebar.contains(e.target) && !hamburger?.contains(e.target) && bodyEl.classList.contains('with-sidebar')){
+        setSidebar(false);
+      }
+    }); // [web:1]
+
+    // Category menu jump
+    document.querySelectorAll('.cat-link').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        const cat = a.getAttribute('data-cat');
+        document.getElementById('btnGrouped')?.click();
+        setTimeout(()=>{
+          const anchor = document.getElementById(`cat-${cat}`);
+          if(anchor) anchor.scrollIntoView({behavior:'smooth', block:'start'});
+          setSidebar(false);
+        }, 350);
+      });
+    }); // [web:1]
+
+    // Close modal buttons
+    document.querySelectorAll('.close-x').forEach(btn=>{
+      btn.addEventListener('click', ()=> closeModal(btn.getAttribute('data-close')));
+    }); // [web:1]
+
+    // Login
+    document.getElementById('adminLoginBtn')?.addEventListener('click', ()=> openModal('#loginModal')); // [web:25]
+    document.getElementById('doLogin')?.addEventListener('click', async ()=>{
+      const u = document.getElementById('username')?.value?.trim();
+      const p = document.getElementById('password')?.value?.trim();
+      if(!u || !p) return alert("Enter credentials");
+      const fd = new FormData(); fd.append('username',u); fd.append('password',p);
+      try{
+        const res = await fetch(API_URL + "/auth/login", { method:"POST", body: fd, mode:"cors", credentials:CRED });
+        if(!res.ok) throw new Error("Invalid login");
+        await res.json();
+        isAdmin = true;
+        document.getElementById('adminBar').style.display = 'flex';
+        closeModal('#loginModal');
+        openModal('#uploadModal');
+        await refreshAfterMutation();
+      }catch(err){ alert("Login failed."); }
+    }); // [web:25][web:26]
+
+    // Admin quick actions
+    document.getElementById('btnOpenUpload')?.addEventListener('click', ()=> openModal('#uploadModal')); // [web:1]
+    document.getElementById('btnManageEvents')?.addEventListener('click', async ()=>{
+      openModal('#eventsModal');
+      await loadEventsIntoModal();
+    }); // [web:21]
+
+    // Upload Mantra
+    document.getElementById("uploadForm")?.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      const formData = new FormData(e.target); // keep Content-Type unmanaged for multipart [web:39]
+      try{
+        const res = await fetch(API_URL + "/mantras/upload", { method:"POST", body: formData, mode:"cors", credentials:CRED });
+        if(!res.ok) throw new Error("Upload failed");
+        const data = await res.json();
+        alert(data.message || "Uploaded");
+        closeModal('#uploadModal');
+        await refreshAfterMutation();
+      }catch(err){ alert("Upload failed."); }
+    }); // [web:30][web:39]
+
+    // Edit Mantra save
+    document.getElementById("editMantraForm")?.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      const f = e.target;
+      const id = f.mantra_id.value;
+      const fd = new FormData();
+      fd.append('mantra_name', f.mantra_name.value.trim());
+      fd.append('language', f.language.value.trim());
+      fd.append('description', f.description.value.trim());
+      fd.append('category', f.category.value.trim());
+      if(f.image.files[0]) fd.append('image', f.image.files[0]);
+      if(f.pdf.files[0]) fd.append('pdf', f.pdf.files[0]);
+      if(f.audio.files[0]) fd.append('audio', f.audio.files[0]);
+      try{
+        const res = await fetch(`${API_URL}/mantras/${id}`, { method:"PUT", body: fd, mode:"cors", credentials:CRED });
+        if(!res.ok) throw new Error("Update failed");
+        await res.json();
+        closeModal('#editMantraModal');
+        await refreshAfterMutation();
+        alert("Mantra updated.");
+      }catch(err){ alert("Update failed."); }
+    }); // [web:30][web:25]
+
+    // Search/filter
+    document.getElementById("searchBtn")?.addEventListener("click", loadAll); // [web:1]
+    const debAll = debounce(loadAll, 250);
+    document.getElementById("search")?.addEventListener("input", debAll); // [web:13]
+    document.getElementById("languageFilter")?.addEventListener("change", loadAll); // [web:1]
+
+    // Switcher
+    const btnAll = document.getElementById('btnAll');
+    const btnGrouped = document.getElementById('btnGrouped');
+    const searchRow = document.getElementById('searchRow');
+
+    btnAll?.addEventListener('click', ()=>{
+      btnAll.classList.add('active'); btnGrouped?.classList.remove('active');
+      if(searchRow) searchRow.style.display = 'flex';
+      loadAll();
+    }); // [web:1]
+
+    btnGrouped?.addEventListener('click', ()=>{
+      btnGrouped.classList.add('active'); btnAll?.classList.remove('active');
+      if(searchRow) searchRow.style.display = 'none';
+      loadGrouped();
+    }); // [web:1]
+
+    // Events: create
+    document.getElementById('createEventForm')?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      try{
+        const res = await fetch(`${API_URL}/events`, { method:"POST", body: fd, mode:"cors", credentials:CRED });
+        if(!res.ok) throw new Error("Create failed");
+        await res.json();
+        e.target.reset();
+        await loadEventsIntoModal();
+        alert("Event created.");
+      }catch(err){ alert("Creation failed."); }
+    }); // [web:27][web:30]
+
+    // Initial UI
+    // Hide admin bar by default; it appears after login
+    document.getElementById('adminBar').style.display = 'none'; // [web:1]
+
+    // First load
+    loadAll(); // [web:1]
+  }
+})();
+</script>
+
+</body>
+</html>

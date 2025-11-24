@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spiritual Papers - Divine Knowledge Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Devanagari&display=swap');
+    
+    :root {
+      --gold: #d4af37;
+      --deep-red: #8b0000;
+      --saffron: #ff9933;
+      --cream: #fff8f0;
+      --dark-brown: #5d4037;
+      --light-gold: #f9e076;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #1a0f0f 0%, #2c1a1a 100%);
+      color: var(--cream);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Background decorative elements */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 153, 51, 0.05) 0%, transparent 50%);
+      z-index: -1;
+    }
+    
+    /* Header Styles */
+    .header {
+      background: linear-gradient(135deg, var(--deep-red) 0%, #6a1b1b 100%);
+      padding: 1.5rem 0;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      border-bottom: 3px solid var(--gold);
+    }
+    
+    .header::before {
+      content: "ॐ";
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+    
+    .header::after {
+      content: "ॐ";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+    
+    .header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--light-gold);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .header h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    
+    .header p {
+      font-size: 1.2rem;
+      color: var(--cream);
+      font-style: italic;
+      opacity: 0.9;
+    }
+    
+    /* Admin Button */
+    #adminLoginBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
+      color: var(--deep-red);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    #adminLoginBtn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 20px;
+    }
+    
+    /* Paper Cards */
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .paper-card {
+      background: linear-gradient(145deg, rgba(139, 0, 0, 0.1) 0%, rgba(93, 64, 55, 0.2) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    .paper-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--deep-red), var(--gold), var(--saffron));
+    }
+    
+    .paper-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+      border-color: var(--gold);
+    }
+    
+    .paper-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .paper-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--light-gold);
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .paper-description {
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      text-align: center;
+    }
+    
+    .paper-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--light-gold);
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+    
+    .paper-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .paper-btn {
+      background: linear-gradient(135deg, var(--deep-red) 0%, #6a1b1b 100%);
+      color: var(--cream);
+      border: 1px solid var(--gold);
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    
+    .paper-btn:hover {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
+      color: var(--deep-red);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+    
+    .paper-btn.download {
+      background: linear-gradient(135deg, var(--saffron) 0%, #ffad5c 100%);
+      color: var(--dark-brown);
+    }
+    
+    .admin-actions {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+    }
+    
+    .admin-btn {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .admin-btn:hover {
+      background: var(--gold);
+      color: var(--deep-red);
+      transform: scale(1.1);
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background: linear-gradient(145deg, #2c1a1a 0%, #1a0f0f 100%);
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 10px 50px rgba(212, 175, 55, 0.2);
+      animation: modalAppear 0.5s ease;
+    }
+    
+    @keyframes modalAppear {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      transform: rotate(90deg);
+      color: var(--light-gold);
+    }
+    
+    .modal h2 {
+      color: var(--light-gold);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .modal h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--light-gold);
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      color: var(--cream);
+      font-family: 'Playfair Display', serif;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+    
+    .form-control::placeholder {
+      color: rgba(255, 248, 240, 0.6);
+    }
+    
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .file-input {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .file-input input[type="file"] {
+      position: absolute;
+      left: -9999px;
+    }
+    
+    .file-input-label {
+      display: block;
+      padding: 12px 15px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px dashed var(--gold);
+      border-radius: 8px;
+      text-align: center;
+      color: var(--light-gold);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .file-input-label:hover {
+      background: rgba(212, 175, 55, 0.2);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
+      color: var(--deep-red);
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    }
+    
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Tab Styles */
+    .tab-container {
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-buttons {
+      display: flex;
+      background: rgba(139, 0, 0, 0.2);
+      border-radius: 30px;
+      padding: 5px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-button {
+      flex: 1;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      border-radius: 25px;
+      color: var(--cream);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .tab-button.active {
+      background: var(--gold);
+      color: var(--deep-red);
+      font-weight: bold;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Edit Form */
+    .edit-form {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(139, 0, 0, 0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      animation: slideDown 0.4s ease;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Floating Elements Animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -15px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    /* Loading Animation */
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gold);
+    }
+    
+    .spinner {
+      border: 4px solid rgba(212, 175, 55, 0.3);
+      border-top: 4px solid var(--gold);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--cream);
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    .footer::before {
+      content: "ॐ";
+      display: block;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .papers-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      #adminLoginBtn {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 1rem auto;
+        display: inline-flex;
+      }
+      
+      .paper-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>Divine Spiritual Papers</h1>
+    <p>Sacred Knowledge for Spiritual Seekers</p>
+    <button id="adminLoginBtn">
+      <i class="fas fa-lock"></i> Admin Portal
+    </button>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="papers-grid" id="papersContainer">
+      <!-- Papers will be loaded here -->
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Loading Divine Papers...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2023 Divine Spiritual Portal. All Rights Reserved.</p>
+    <p>May the Divine Mother Bless You</p>
+  </div>
+
+  <!-- Admin Modal -->
+  <div class="modal" id="adminModal">
+    <div class="modal-content floating">
+      <button class="modal-close">&times;</button>
+      
+      <div class="tab-container">
+        <div class="tab-buttons">
+          <button class="tab-button active" data-tab="loginTab">Admin Login</button>
+          <button class="tab-button" data-tab="addPaperTab">Add Paper</button>
+        </div>
+        
+        <div id="loginTab" class="tab-content active">
+          <h2><i class="fas fa-lock"></i> Admin Access</h2>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Enter password">
+          </div>
+          <button id="loginBtn" class="btn-primary">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+        </div>
+        
+        <div id="addPaperTab" class="tab-content">
+          <h2><i class="fas fa-plus-circle"></i> Add New Paper</h2>
+          <div class="form-group">
+            <label for="paperTitle">Paper Title *</label>
+            <input type="text" id="paperTitle" class="form-control" placeholder="Enter paper title" disabled>
+          </div>
+          <div class="form-group">
+            <label for="paperDesc">Description</label>
+            <textarea id="paperDesc" class="form-control" placeholder="Enter paper description (optional)" disabled></textarea>
+          </div>
+          <div class="form-group">
+            <label for="paperFile">Upload Paper *</label>
+            <div class="file-input">
+              <input type="file" id="paperFile" accept=".pdf,.doc,.docx,.txt" disabled>
+              <label for="paperFile" class="file-input-label" id="fileInputLabel">
+                <i class="fas fa-cloud-upload-alt"></i> Choose File
+              </label>
+            </div>
+          </div>
+          <button id="addPaperBtn" class="btn-primary" disabled>
+            <i class="fas fa-upload"></i> Upload Paper
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'https://manthras-7.onrender.com'; // Change to your backend URL
+    let isAdminLoggedIn = false;
+    let papers = [];
+
+    // DOM Elements
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    const adminModal = document.getElementById('adminModal');
+    const loginBtn = document.getElementById('loginBtn');
+    const addPaperBtn = document.getElementById('addPaperBtn');
+    const papersContainer = document.getElementById('papersContainer');
+    const modalClose = document.querySelector('.modal-close');
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const fileInput = document.getElementById('paperFile');
+    const fileInputLabel = document.getElementById('fileInputLabel');
+
+    // Update file input label
+    fileInput.addEventListener('change', function() {
+      if (this.files.length > 0) {
+        fileInputLabel.innerHTML = `<i class="fas fa-file"></i> ${this.files[0].name}`;
+      } else {
+        fileInputLabel.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Choose File`;
+      }
+    });
+
+    // Tab switching
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabName = button.getAttribute('data-tab');
+        
+        // Update active tab button
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Update active tab content
+        document.querySelectorAll('.tab-content').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        document.getElementById(tabName).classList.add('active');
+      });
+    });
+
+    // Load papers from backend
+    async function loadPapers() {
+      try {
+        papersContainer.innerHTML = `
+          <div class="loading">
+            <div class="spinner"></div>
+            <p>Loading Divine Papers...</p>
+          </div>
+        `;
+        
+        const response = await fetch(`${API_BASE}/papers`);
+        if (response.ok) {
+          papers = await response.json();
+          renderPapers();
+        } else {
+          throw new Error('Failed to load papers');
+        }
+      } catch (error) {
+        console.error('Error loading papers:', error);
+        papersContainer.innerHTML = `
+          <div class="loading">
+            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Failed to load papers. Please try again later.</p>
+          </div>
+        `;
+      }
+    }
+
+    function renderPapers() {
+      if (papers.length === 0) {
+        papersContainer.innerHTML = `
+          <div class="loading">
+            <i class="fas fa-book-open" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>No papers available yet. Check back soon!</p>
+          </div>
+        `;
+        return;
+      }
+
+      papersContainer.innerHTML = '';
+      papers.forEach(paper => {
+        const card = document.createElement('div');
+        card.className = 'paper-card floating';
+        
+        // Determine icon based on file type
+        let icon = 'fa-file-alt';
+        if (paper.filename) {
+          if (paper.filename.toLowerCase().includes('.pdf')) icon = 'fa-file-pdf';
+          else if (paper.filename.toLowerCase().includes('.doc')) icon = 'fa-file-word';
+        }
+        
+        card.innerHTML = `
+          <div class="paper-icon">
+            <i class="fas ${icon}"></i>
+          </div>
+          <div class="paper-title">${paper.title}</div>
+          ${paper.description ? `<div class="paper-description">${paper.description}</div>` : ''}
+          <div class="paper-meta">
+            <span><i class="fas fa-calendar"></i> ${new Date(paper.uploaded_at).toLocaleDateString()}</span>
+            <span><i class="fas fa-weight-hanging"></i> ${paper.file_size ? (paper.file_size / 1024 / 1024).toFixed(2) + ' MB' : 'N/A'}</span>
+          </div>
+          <div class="paper-actions">
+            <a href="${API_BASE}${paper.file_url}" target="_blank" class="paper-btn">
+              <i class="fas fa-eye"></i> View
+            </a>
+            <a href="${API_BASE}${paper.file_url}" download class="paper-btn download">
+              <i class="fas fa-download"></i> Download
+            </a>
+          </div>
+          ${isAdminLoggedIn ? `
+            <div class="admin-actions">
+              <button class="admin-btn" onclick="editPaper('${paper._id}')" title="Edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="admin-btn" onclick="deletePaper('${paper._id}')" title="Delete">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+            <div id="edit-form-${paper._id}" class="edit-form">
+              <h3><i class="fas fa-edit"></i> Edit Paper</h3>
+              <div class="form-group">
+                <label for="edit-title-${paper._id}">Title</label>
+                <input type="text" id="edit-title-${paper._id}" class="form-control" value="${paper.title}">
+              </div>
+              <div class="form-group">
+                <label for="edit-desc-${paper._id}">Description</label>
+                <textarea id="edit-desc-${paper._id}" class="form-control">${paper.description || ''}</textarea>
+              </div>
+              <div class="form-group">
+                <label>Replace File (Optional)</label>
+                <div class="file-input">
+                  <input type="file" id="edit-file-${paper._id}" class="edit-file-input">
+                  <label for="edit-file-${paper._id}" class="file-input-label">
+                    <i class="fas fa-cloud-upload-alt"></i> Choose New File
+                  </label>
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button onclick="updatePaper('${paper._id}')" class="btn-primary" style="flex: 1;">
+                  <i class="fas fa-save"></i> Update
+                </button>
+                <button onclick="cancelEdit('${paper._id}')" class="btn-primary" style="flex: 1; background: linear-gradient(135deg, #6a1b1b 0%, var(--deep-red) 100%);">
+                  <i class="fas fa-times"></i> Cancel
+                </button>
+              </div>
+            </div>
+          ` : ''}
+        `;
+        papersContainer.appendChild(card);
+        
+        // Add event listener for file input in edit form
+        const editFileInput = card.querySelector(`#edit-file-${paper._id}`);
+        const editFileLabel = card.querySelector(`label[for="edit-file-${paper._id}"]`);
+        if (editFileInput && editFileLabel) {
+          editFileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+              editFileLabel.innerHTML = `<i class="fas fa-file"></i> ${this.files[0].name}`;
+            } else {
+              editFileLabel.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Choose New File`;
+            }
+          });
+        }
+      });
+    }
+
+    // Admin login
+    loginBtn.addEventListener('click', async () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        alert("Please enter both username and password!");
+        return;
+      }
+
+      try {
+        loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+        loginBtn.disabled = true;
+
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+
+        const response = await fetch(`${API_BASE}/auth/login`, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          isAdminLoggedIn = true;
+          
+          // Enable add paper fields
+          document.getElementById('paperTitle').disabled = false;
+          document.getElementById('paperDesc').disabled = false;
+          document.getElementById('paperFile').disabled = false;
+          addPaperBtn.disabled = false;
+          
+          // Switch to add paper tab
+          document.querySelector('[data-tab="addPaperTab"]').click();
+          
+          // Reload papers to show admin actions
+          await loadPapers();
+          
+          // Update admin button
+          adminLoginBtn.innerHTML = '<i class="fas fa-user-shield"></i> Admin Mode';
+          adminLoginBtn.style.background = 'linear-gradient(135deg, var(--saffron) 0%, #ffad5c 100%)';
+          
+        } else {
+          alert("Invalid credentials! Please try again.");
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        alert("Login failed! Please check your connection.");
+      } finally {
+        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
+        loginBtn.disabled = false;
+      }
+    });
+
+    // Add new paper
+    addPaperBtn.addEventListener('click', async () => {
+      const title = document.getElementById('paperTitle').value;
+      const desc = document.getElementById('paperDesc').value;
+      const fileInput = document.getElementById('paperFile');
+      
+      if (!title.trim()) {
+        alert("Paper title is required!");
+        return;
+      }
+      
+      if (!fileInput.files[0]) {
+        alert("Please select a file to upload!");
+        return;
+      }
+
+      try {
+        addPaperBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+        addPaperBtn.disabled = true;
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('title', title);
+        formData.append('description', desc);
+        formData.append('paper_file', fileInput.files[0]);
+
+        const response = await fetch(`${API_BASE}/papers/upload`, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          alert("Paper uploaded successfully!");
+          
+          // Clear form
+          document.getElementById('paperTitle').value = "";
+          document.getElementById('paperDesc').value = "";
+          document.getElementById('paperFile').value = "";
+          fileInputLabel.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File';
+          
+          // Reload papers
+          await loadPapers();
+        } else {
+          const error = await response.json();
+          alert(`Upload failed: ${error.detail}`);
+        }
+      } catch (error) {
+        console.error('Upload error:', error);
+        alert("Upload failed! Please try again.");
+      } finally {
+        addPaperBtn.innerHTML = '<i class="fas fa-upload"></i> Upload Paper';
+        addPaperBtn.disabled = false;
+      }
+    });
+
+    // Edit paper functions
+    function editPaper(paperId) {
+      document.getElementById(`edit-form-${paperId}`).style.display = 'block';
+    }
+
+    function cancelEdit(paperId) {
+      document.getElementById(`edit-form-${paperId}`).style.display = 'none';
+    }
+
+    async function updatePaper(paperId) {
+      const title = document.getElementById(`edit-title-${paperId}`).value;
+      const desc = document.getElementById(`edit-desc-${paperId}`).value;
+      const fileInput = document.getElementById(`edit-file-${paperId}`);
+
+      if (!title.trim()) {
+        alert("Paper title is required!");
+        return;
+      }
+
+      try {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('title', title);
+        formData.append('description', desc);
+        
+        if (fileInput.files[0]) {
+          formData.append('paper_file', fileInput.files[0]);
+        }
+
+        const response = await fetch(`${API_BASE}/papers/${paperId}`, {
+          method: 'PUT',
+          body: formData
+        });
+
+        if (response.ok) {
+          alert("Paper updated successfully!");
+          cancelEdit(paperId);
+          await loadPapers();
+        } else {
+          const error = await response.json();
+          alert(`Update failed: ${error.detail}`);
+        }
+      } catch (error) {
+        console.error('Update error:', error);
+        alert("Update failed! Please try again.");
+      }
+    }
+
+    // Delete paper
+    async function deletePaper(paperId) {
+      if (!confirm("Are you sure you want to delete this paper? This action cannot be undone.")) {
+        return;
+      }
+
+      try {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+
+        const response = await fetch(`${API_BASE}/papers/${paperId}`, {
+          method: 'DELETE',
+          body: formData
+        });
+
+        if (response.ok) {
+          alert("Paper deleted successfully!");
+          await loadPapers();
+        } else {
+          const error = await response.json();
+          alert(`Delete failed: ${error.detail}`);
+        }
+      } catch (error) {
+        console.error('Delete error:', error);
+        alert("Delete failed! Please try again.");
+      }
+    }
+
+    // Modal handlers
+    adminLoginBtn.addEventListener('click', () => {
+      adminModal.style.display = "flex";
+    });
+
+    modalClose.addEventListener('click', () => {
+      adminModal.style.display = "none";
+    });
+
+    // Close modal on outside click
+    window.addEventListener('click', (event) => {
+      if (event.target === adminModal) {
+        adminModal.style.display = "none";
+      }
+    });
+
+    // Initial load
+    loadPapers();
+  </script>
+</body>
+</html>
