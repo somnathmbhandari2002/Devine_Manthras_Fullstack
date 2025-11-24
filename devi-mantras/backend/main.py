@@ -13,8 +13,8 @@ import os
 # Environment Variables
 # -------------------------------------------------
 MONGO_URL = os.getenv("MONGO_URL", "YOUR_MONGODB_ATLAS_URL")
-ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin")
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "ADD_YOUROWNPASSWORD")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "ADD_YOUROWNPASSWORD")
 
 # -------------------------------------------------
 # MongoDB Connection
@@ -612,3 +612,4 @@ def delete_paper(
     
 
     return {"message": "Paper deleted successfully"}
+
